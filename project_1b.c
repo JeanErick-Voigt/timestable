@@ -21,11 +21,8 @@ int main(void)
 	printf("> timestable \n");
 	for (x = 0; x<11; x++){
 		for (y = 0; y<11; y++){
-			if ( x == 0 && y == 0){
-				continue;
-			}			
-			else if (x==0 & y == 1){
-				printf("%-5c", asterisk);
+			if (x==0 & y == 0){
+				printf("%5c", asterisk);
 					continue;
 			}
 			// row 0 all columns			
