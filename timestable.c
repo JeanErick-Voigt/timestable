@@ -1,31 +1,8 @@
 #include <stdio.h>
 
 
-
-int myatoi(char s[])
-{
-	int i = 0, n = 0;
-	while (s[i] >= '0' && s[i] <= '9'){
-		n = 10 * n + s[i++] - '0';
-	}
-	return(n);
-}
-
-int spaces(int row, int column)
-{	
-	int pad;	
-	if((row * column) < 1000){
-		pad = 4;
-	}
-	else if((row * column) < 10000){
-		pad = 5;
-	}else{
-		pad = 6;
-	}	
-	return(pad);
-}
-
-
+int myatoi(char s[]);
+int spaces(int row, int column);
 
 int main(int argc, char *argv[])
 {	
@@ -72,5 +49,32 @@ int main(int argc, char *argv[])
 		printf("\n");
 	}	
 }
+
+
+int myatoi(char s[])
+{
+	int i = 0, n = 0;
+	while (s[i] >= '0' && s[i] <= '9'){
+		n = 10 * n + s[i++] - '0';
+	}
+	return(n);
+}
+
+int spaces(int row, int column)
+{	
+	int pad;	
+	if((row * column) < 1000){
+		pad = 4;
+	}
+	else if((row * column) < 10000){
+		pad = 5;
+	}else{
+		pad = 6;
+	}	
+	return(pad);
+}
+
+
+
 
 
