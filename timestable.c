@@ -32,11 +32,9 @@ int main(int argc, char *argv[])
 	int max;	
 	int i;
 	for (i = 0; i < argc; i++){
-		//printf("This is command number and line argument: %d  %s\n", i, argv[i]);
 		if(argc > 1){		
 			if (i == 1){
 				max = myatoi(argv[i]) + 1;
-				//printf("%d", max);
 				break;
 			}
 		}else{

@@ -3,9 +3,9 @@
 #  Timestable project 
 #
 
-all: timestable.c
+all: timestable
 
 timestable: timestable.c
-	gcc -Wall -o timestable.c
+	gcc -Wall -o timestable timestable.c
 
 
