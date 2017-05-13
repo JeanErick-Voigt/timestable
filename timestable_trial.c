@@ -12,7 +12,7 @@ int main(int argc, char *argv[])
 		min = 1;
 	}
 	else if(argc == 2){		
-		max = myatoi(argv[i+1]);
+		max = myatoi(argv[1]);
 		min = 1;
 	}else{ 
 		min = myatoi(argv[1]);
@@ -65,7 +65,10 @@ int spaces(int row, int column)
 {	
 	int pad;	
 	if (row == 1){
-		if((row * column) < 32){
+		if((row * column) < 10){
+			pad = 3;
+		}
+		else if((row * column) < 32){
 			pad = 4;
 		}
 		else if((row * column) < 100){
@@ -75,14 +78,19 @@ int spaces(int row, int column)
 		}	
 		
 	}else{
-		if((row * column) < 100){
+		if((column * column) < 81){
+			pad = 3;
+		}	
+		else if((column * column) < 100){
 			pad = 4;
-		}else if((row * column) < 10000){
+		}else if((column * column) <= 10000){
 			pad = 5;
 		}else{
 			pad = 6;
 		}
+	}
 	return(pad);		
+	
 }
 
 
