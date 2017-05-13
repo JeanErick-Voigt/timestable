@@ -6,7 +6,6 @@ int spaces(int row, int column);
 int main(int argc, char *argv[])
 {	
 	int max, min;	
-	int i;
 	if(argc == 1){
 		max = 10;
 		min = 1;
@@ -16,16 +15,21 @@ int main(int argc, char *argv[])
 		min = 1;
 	}else{ 
 		min = myatoi(argv[1]);
+	//	if (min < 0){
+	//		printf("just checking\n");
+	//		printf("Minimum value can not be less than 0. Value will automatically set to 0.\n");
+	//		min = 0;
+		
 		max = myatoi(argv[2]);
 	}
 	
-	int limit = ((max - min) + 2);	
+	int limit = ((max - min) + 3);	
 	int numbers[limit][limit];
 	int pad_space;		
 	pad_space = spaces(min, max); 
 	char asterisk = '*';		
-	int answer;
-	int x, y;
+	int answer, x, y;
+	int limit_column, limit_row;
 	printf("   > timestable \n");
 	for (x = min; x<=max + 1; x++){
 		for (y = min; y<= max + 1; y++){
@@ -35,16 +39,22 @@ int main(int argc, char *argv[])
 			}
 						
 			else if (x == min && y != min){
-				answer = 1 * (y-1);
-				numbers[limit][limit] = answer;
+				answer = x * (y-1);
+				limit_row = x;
+				limit_column = y -1;
+				numbers[limit_row][limit_column] = answer;
 			
 			}
 			else if (x != min && y == min){
-				numbers[limit][limit] = (x-1) * 1;
+				limit_row = x - 1;
+				limit_column = y;
+				numbers[limit_row][limit_column] = (x-1) * y;
 			}else{
-				numbers[limit][limit] = (x-1) * (y - 1);			
+				limit_row = x - 1;
+				limit_column = y - 1;
+				numbers[limit_row][limit_column] = (x-1) * (y - 1);			
 			}
-			printf("%*d", pad_space, numbers[limit][limit]);
+			printf("%*d", pad_space, numbers[limit_row][limit_column]);
 		
 		}
 		printf("\n");
@@ -83,7 +93,7 @@ int spaces(int row, int column)
 		}	
 		else if((column * column) < 100){
 			pad = 4;
-		}else if((column * column) <= 10000){
+		}else if((column * column) < 10000){
 			pad = 5;
 		}else{
 			pad = 6;
