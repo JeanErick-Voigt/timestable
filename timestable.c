@@ -23,16 +23,19 @@ int main(int argc, char *argv[])
 		max = myatoi(argv[2]);
 	}
 	
-	int limit = ((max - min) + 2);	
+	int limit = ((max - min) + 3);	
 	int numbers[limit][limit];
 	int pad_space;		
 	pad_space = spaces(min, max); 
 	char asterisk = '*';		
 	int answer;
 	int x, y;
+	int countx = 0;
 	printf("   > timestable \n");
 	for (x = min; x<=max + 1; x++){
+		int county = 0;
 		for (y = min; y<= max + 1; y++){
+						
 			if ((x==min) && (y == min)){
 				printf("%*c", pad_space, asterisk);
 					continue;
@@ -40,18 +43,20 @@ int main(int argc, char *argv[])
 						
 			else if (x == min && y != min){
 				answer = 1 * (y-1);
-				numbers[limit][limit] = answer;
+				numbers[countx][county] = answer;
 			
 			}
 			else if (x != min && y == min){
-				numbers[limit][limit] = (x-1) * 1;
+				numbers[countx][county] = (x-1) * 1;
 			}else{
-				numbers[limit][limit] = (x-1) * (y - 1);			
+				numbers[countx][county] = (x-1) * (y - 1);
+				//printf("countx and county: %d  %d", countx, county);			
 			}
-			printf("%*d", pad_space, numbers[limit][limit]);
-		
+			printf("%*d", pad_space, numbers[countx][county]);
+			county++;
 		}
 		printf("\n");
+	countx++;
 	}	
 }
 
